@@ -37,7 +37,7 @@ const faqs = [
     question: 'Where can I download the Android application?',
     answer: (
       <>
-        You can download the current Android demo directly:{' '}
+        You can download the current Android app directly:{' '}
         <a
           href={appDownload.href}
           download={appDownload.fileName}
@@ -45,9 +45,9 @@ const faqs = [
         >
           BPSU Drive v{appDownload.version} APK
         </a>
-        . It is a debug demo build for testing, not an official release. Android
-        may ask you to allow installation from your browser. The app is not
-        connected to university systems, and its screens contain demo content.
+        . This is the official release build. Android may ask you to allow
+        installation from your browser. The app is not connected to university
+        systems, and its screens contain demo content.
       </>
     ),
   },

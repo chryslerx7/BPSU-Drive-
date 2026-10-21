@@ -44,7 +44,7 @@ npm run lint
 bpsu-drive/
 ├── public/
 │   ├── downloads/
-│   │   └── BPSU-Drive-v1.0-debug.apk
+│   │   └── BPSU-Drive-v1.0.0.apk
 │   ├── images/               App interface previews used on the page
 │   └── favicon.svg
 ├── src/
@@ -107,39 +107,39 @@ wrapped grid on larger screens.
 
 The site hosts a direct APK download at:
 
-`public/downloads/BPSU-Drive-v1.0-debug.apk`
+`public/downloads/BPSU-Drive-v1.0.0.apk`
 
 Current metadata:
 
 - Package: `com.example.bpsudrive`
-- Version: `1.0` (`versionCode 1`)
+- Version: `1.0.0` (`versionName 1.0`, `versionCode 1`)
 - Minimum Android version: Android 7.0 (API 24)
-- Size: 8.2 MB
-- Build: debug/demo build, not a signed production release
-- SHA-256: `6E2484DD26A9FDD43A62416E07049F7E9362C3FEC4CB20F561E54AF33D98E82F`
+- Size: 6.9 MB
+- Build: release build (`v1.0.0`)
+- SHA-256: `316FC9F3C2E673023A671FE68117C1754A7687800624CE960DA9E67D22381D6A`
 
 The download path, filename, version, size, and build label are centralized in
 `src/data/appDownload.js`. The Navigation, Hero, FAQ, and final call to action all
 link to that single file.
 
-To publish a production APK:
+To publish a new APK release:
 
-1. Build and sign a release APK in Android Studio.
+1. Build and sign the release APK in Android Studio.
 2. Replace the APK in `public/downloads/`.
 3. Update `fileName`, `version`, `size`, and `buildType` in
    `src/data/appDownload.js`.
 4. Update the hash and metadata in this README.
 5. Redeploy the site.
 
-A debug APK may require enabling installation from the browser or file manager
-on the Android device. The package ID should also be changed from the example ID
-before an official release.
+Android may require enabling installation from the browser or file manager on
+the device. The package ID should still be changed from the example ID
+(`com.example.bpsudrive`) before publishing to an app store.
 
 ## Placeholders and content notes
 
 - The page uses interface previews from the BPSU Drive Android app concept and
   includes demo content. The screenshots are not presented as live data.
-- The page provides a direct download for the current debug APK. It does not
+- The page provides a direct download for the current release APK. It does not
   provide an app-store listing, working login, registration, or payment flow.
 - The logo in the navigation is a custom BPSU Drive mark built in
   `src/components/Logo.jsx`; no official university seal is used as a site logo.
