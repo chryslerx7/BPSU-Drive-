@@ -534,6 +534,27 @@ h3 {
   margin-top: 32px;
 }
 
+.download-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--color-subtle);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.download-status {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 0 3px var(--color-success-soft);
+}
+
 .hero-points {
   display: flex;
   flex-wrap: wrap;
@@ -1466,6 +1487,17 @@ h3 {
   line-height: 1.72;
 }
 
+.faq-answer a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.faq-answer a:hover {
+  color: var(--color-primary-dark);
+}
+
 /* =========================================================
    Final call to action
    ========================================================= */
@@ -1694,9 +1726,9 @@ h3 {
     left: 0;
     z-index: 1;
     display: block;
-    background: rgba(24, 24, 27, 0.36);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(24, 24, 27, 0.46);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     animation: fade-in 200ms var(--ease-smooth);
   }
 

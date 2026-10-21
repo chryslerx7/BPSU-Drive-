@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { appDownload } from '../data/appDownload'
 import Reveal from './Reveal'
 
 const faqs = [
@@ -34,8 +35,21 @@ const faqs = [
   },
   {
     question: 'Where can I download the Android application?',
-    answer:
-      'A public download link is not available on this page yet. An official download link will be provided when a distribution method for the Android application becomes available. This page does not offer an APK or a working login.',
+    answer: (
+      <>
+        You can download the current Android demo directly:{' '}
+        <a
+          href={appDownload.href}
+          download={appDownload.fileName}
+          type="application/vnd.android.package-archive"
+        >
+          BPSU Drive v{appDownload.version} APK
+        </a>
+        . It is a debug demo build for testing, not an official release. Android
+        may ask you to allow installation from your browser. The app is not
+        connected to university systems, and its screens contain demo content.
+      </>
+    ),
   },
 ]
 

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { appDownload } from '../data/appDownload'
+import DownloadIcon from './DownloadIcon'
 import Logo from './Logo'
 
 const navItems = [
@@ -33,21 +35,6 @@ function CloseIcon() {
         stroke="currentColor"
         strokeWidth="1.8"
         strokeLinecap="round"
-      />
-    </svg>
-  )
-}
-
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
-      <path
-        d="M5 12h14m-5-5 5 5-5 5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   )
@@ -119,6 +106,13 @@ function Navbar() {
     }
   }
 
+  function handleDownload() {
+    if (isMenuOpen) {
+      restoreMenuFocusRef.current = true
+      setIsMenuOpen(false)
+    }
+  }
+
   return (
     <header className="site-header">
       <div className="container nav-inner">
@@ -155,12 +149,14 @@ function Navbar() {
           </ul>
 
           <a
-            href="#features"
+            href={appDownload.href}
             className="btn btn-primary nav-cta"
-            onClick={() => handleNavigation('features')}
+            download={appDownload.fileName}
+            type="application/vnd.android.package-archive"
+            onClick={handleDownload}
           >
-            Explore the App
-            <ArrowIcon />
+            Download APK
+            <DownloadIcon />
           </a>
         </nav>
 

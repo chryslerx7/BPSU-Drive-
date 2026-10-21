@@ -135,7 +135,7 @@ function About() {
 
             <div className="about-panel-footer">
               <span>Android app concept</span>
-              <span>Informational page</span>
+              <span>Debug APK available</span>
             </div>
           </div>
 

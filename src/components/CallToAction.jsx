@@ -1,19 +1,6 @@
+import { appDownload } from '../data/appDownload'
+import DownloadIcon from './DownloadIcon'
 import Reveal from './Reveal'
-
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">
-      <path
-        d="M5 12h14m-5-5 5 5-5 5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
 
 function CallToAction() {
   return (
@@ -27,14 +14,22 @@ function CallToAction() {
             <p className="eyebrow eyebrow--light">Get to know BPSU Drive</p>
             <h2 id="cta-title">Make Your Campus Requests Easier to Manage.</h2>
             <p>
-              Explore how BPSU Drive organizes service requests and receipt
-              submissions in one student-focused experience.
+              Try the current Android demo and see how BPSU Drive organizes
+              service requests and receipt submissions.
             </p>
-            <a href="#features" className="btn btn-light">
-              Explore Features
-              <ArrowIcon />
+            <a
+              href={appDownload.href}
+              className="btn btn-light"
+              download={appDownload.fileName}
+              type="application/vnd.android.package-archive"
+            >
+              <DownloadIcon />
+              Download Android APK
             </a>
-            <p className="cta-note">Informational page · No account required</p>
+            <p className="cta-note">
+              v{appDownload.version} {appDownload.buildType} ·{' '}
+              {appDownload.minimumAndroid} · {appDownload.size}
+            </p>
           </div>
         </Reveal>
       </div>

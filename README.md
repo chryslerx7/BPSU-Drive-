@@ -41,24 +41,28 @@ npm run lint
 ## Project structure
 
 ```text
-bpsu-drive-landing-page/
+bpsu-drive/
 ├── public/
+│   ├── downloads/
+│   │   └── BPSU-Drive-v1.0-debug.apk
 │   ├── images/               App interface previews used on the page
 │   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.jsx        Sticky navigation and mobile menu
-│   │   ├── Hero.jsx          Hero copy and animated phone preview
+│   │   ├── Navbar.jsx        Sticky navigation, mobile menu, APK CTA
+│   │   ├── Hero.jsx          Hero copy, APK download, animated phone preview
 │   │   ├── Features.jsx      Six feature cards
 │   │   ├── HowItWorks.jsx    Four-step request workflow
 │   │   ├── AppPreview.jsx    Five-screen interface gallery
 │   │   ├── About.jsx         Concept overview and principles
-│   │   ├── FAQ.jsx           Accessible accordion
-│   │   ├── CallToAction.jsx  Final call-to-action panel
+│   │   ├── FAQ.jsx           Accessible accordion and download answer
+│   │   ├── CallToAction.jsx  Final APK download panel
 │   │   ├── Footer.jsx        Navigation, description, and copyright
+│   │   ├── DownloadIcon.jsx  Shared APK download icon
 │   │   ├── Logo.jsx          Custom BPSU Drive wordmark
 │   │   └── Reveal.jsx        Small scroll-reveal wrapper
 │   ├── data/
+│   │   ├── appDownload.js    APK path, version, size, and build metadata
 │   │   └── appScreens.js     Screenshot paths, labels, and alt text
 │   ├── App.jsx               Page composition
 │   ├── main.jsx              React entry point
@@ -99,13 +103,44 @@ pause control, pauses while hovered, and stays still when the operating system
 requests reduced motion. The gallery is a horizontal swipe area on mobile and a
 wrapped grid on larger screens.
 
+## Android APK download
+
+The site hosts a direct APK download at:
+
+`public/downloads/BPSU-Drive-v1.0-debug.apk`
+
+Current metadata:
+
+- Package: `com.example.bpsudrive`
+- Version: `1.0` (`versionCode 1`)
+- Minimum Android version: Android 7.0 (API 24)
+- Size: 8.2 MB
+- Build: debug/demo build, not a signed production release
+- SHA-256: `6E2484DD26A9FDD43A62416E07049F7E9362C3FEC4CB20F561E54AF33D98E82F`
+
+The download path, filename, version, size, and build label are centralized in
+`src/data/appDownload.js`. The Navigation, Hero, FAQ, and final call to action all
+link to that single file.
+
+To publish a production APK:
+
+1. Build and sign a release APK in Android Studio.
+2. Replace the APK in `public/downloads/`.
+3. Update `fileName`, `version`, `size`, and `buildType` in
+   `src/data/appDownload.js`.
+4. Update the hash and metadata in this README.
+5. Redeploy the site.
+
+A debug APK may require enabling installation from the browser or file manager
+on the Android device. The package ID should also be changed from the example ID
+before an official release.
+
 ## Placeholders and content notes
 
 - The page uses interface previews from the BPSU Drive Android app concept and
   includes demo content. The screenshots are not presented as live data.
-- There is no APK, app-store link, login, registration, or payment flow on this
-  page. The FAQ explains that an official download link will be added when a
-  distribution method exists.
+- The page provides a direct download for the current debug APK. It does not
+  provide an app-store listing, working login, registration, or payment flow.
 - The logo in the navigation is a custom BPSU Drive mark built in
   `src/components/Logo.jsx`; no official university seal is used as a site logo.
 - All request, receipt, and account examples visible in the screenshots are demo
@@ -123,6 +158,7 @@ wrapped grid on larger screens.
 - [ ] Feature cards, step cards, and preview frames lift subtly on hover.
 - [ ] The App Preview displays five phones in a balanced row with captions.
 - [ ] The About panel, FAQ accordion, and final call-to-action render correctly.
+- [ ] The navbar, hero, FAQ, and final APK download links serve the APK file.
 - [ ] Footer links work and the copyright year is current.
 
 ### Tablet (around 768px)
@@ -140,6 +176,7 @@ wrapped grid on larger screens.
 - [ ] The hero heading, description, and phone fit without clipping.
 - [ ] Floating chips are hidden so they cannot overflow the viewport.
 - [ ] App Preview can be swiped horizontally and snaps to each card.
+- [ ] The APK download starts successfully from the mobile navigation and hero.
 - [ ] FAQ answers expand and collapse without keyboard traps.
 - [ ] The page can be scrolled with keyboard and touch without horizontal overflow.
 

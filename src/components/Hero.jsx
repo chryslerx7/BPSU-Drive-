@@ -1,21 +1,8 @@
 import { useEffect, useState } from 'react'
+import { appDownload } from '../data/appDownload'
 import { heroScreens } from '../data/appScreens'
+import DownloadIcon from './DownloadIcon'
 import Reveal from './Reveal'
-
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">
-      <path
-        d="M5 12h14m-5-5 5 5-5 5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
 
 function DownArrowIcon() {
   return (
@@ -132,15 +119,26 @@ function Hero() {
           </p>
 
           <div className="hero-actions">
-            <a href="#features" className="btn btn-primary">
-              Explore Features
-              <ArrowIcon />
+            <a
+              href={appDownload.href}
+              className="btn btn-primary"
+              download={appDownload.fileName}
+              type="application/vnd.android.package-archive"
+            >
+              <DownloadIcon />
+              Download Android APK
             </a>
             <a href="#how-it-works" className="btn btn-secondary">
               <DownArrowIcon />
               See How It Works
             </a>
           </div>
+
+          <p className="download-meta">
+            <span className="download-status" aria-hidden="true" />
+            v{appDownload.version} {appDownload.buildType} · {appDownload.minimumAndroid} ·{' '}
+            {appDownload.size}
+          </p>
 
           <ul className="hero-points" aria-label="BPSU Drive at a glance">
             <li>Student-focused</li>
